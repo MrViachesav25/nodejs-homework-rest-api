@@ -16,9 +16,9 @@ router.get('/', ctrl.getAllContacts);
 
 router.get('/:id', isValidId, ctrl.getContactById);
 
-router.post('/', notEmpty, contactAddValidate, ctrl.addContact); 
+router.post('/', contactAddValidate, ctrl.addContact); 
 
-router.put('/:id', isValidId, contactAddValidate, ctrl.updateContact);
+router.put('/:id', notEmpty, isValidId, contactAddValidate, ctrl.updateContact);
 router.patch('/:id/favorite', notEmptyFavorite, isValidId, contactUpdateFavoriteValidate, ctrl.updateContact);
 router.delete('/:id', isValidId, ctrl.deleteContact);
 
