@@ -1,15 +1,15 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import ErrorStatus from '../constants/index.js';
+import { ErrorStatus } from '../constants/index.js';
 import { ctrlWrapper } from '../middleware/index.js';
-import { User } from '../models/User.js'
+import User from '../models/User.js'
 
 const {SECRET_KEY} = process.env;
 
 const register = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({email});
-    if(user) throw ErrorStatus (409, 'Email in use');
+    if(user) throw ErrorStatus(409, 'Email in use');
     const hashPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({...req.body, password: hashPassword});
 
