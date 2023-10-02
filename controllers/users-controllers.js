@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import ErrorStatus from '../constants/index.js';
+import { ErrorStatus } from '../constants/index.js';
 import { ctrlWrapper } from '../middleware/index.js';
-import { User } from '../models/User.js'
+import User  from '../models/User.js'
 
 const {SECRET_KEY} = process.env;
 
@@ -59,7 +59,9 @@ const logout = async (req, res) => {
     const user = await User.findByIdAndUpdate(_id, { token: ''});
 
     if(!user) throw ErrorStatus(401, 'Not authorized');
-    res.status(204);
+    res.status(204).json({
+		message: 'No Content'
+	});;
 }
 
 
