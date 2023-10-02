@@ -11,6 +11,6 @@ const userLoginValidate = validateBody(userSchema.userLoginSchema)
 authRouter.post('/register', userRegisterValidate, ctrlUser.register);
 authRouter.post('/login', userLoginValidate, ctrlUser.login);
 authRouter.get('/current', auth, ctrlUser.getCurrent);
-authRouter.get('/logout', auth, ctrlUser.logout);
+authRouter.post('/logout', auth, ctrlUser.logout);
 
 export default authRouter;
