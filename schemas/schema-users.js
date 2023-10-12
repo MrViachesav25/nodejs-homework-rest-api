@@ -22,7 +22,18 @@ const userLoginSchema = Joi.object({
     password: Joi.string().min(7).required(),
 });
 
+const userEmailSchema = Joi.object({
+	email: Joi.string()
+    .pattern(emailRegexp)
+    .required()
+    .messages({
+        'any.required':'missing required field email',
+    }),
+});
+
+
 export default {
     userRegisterSchema,
-    userLoginSchema
+    userLoginSchema,
+    userEmailSchema,
 }
