@@ -3,7 +3,7 @@ const ERROR_TYPES = {
     401: "Unauthorized",
     403: "Forbidden",
     404: "Not Found",
-    500: "Internal Server Error",
+    409: "Conflict",
 }
 const ErrorStatus = (status, message = ERROR_TYPES[status]) => {
     const error = new Error(message);
